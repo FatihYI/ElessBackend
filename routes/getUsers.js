@@ -9,11 +9,16 @@ var connection = mysql.createConnection({
   database: 'eless', // Your database's name.
 })
 router.post('/', function(req, res, next) {
-  console.warn(req.body.username);
-  connection.query("Select * from user", function (err, row, field) {
+  //console.warn(req.body.email);
+  connection.query("SELECT * FROM user WHERE email = '"+ req.body.email+ "' AND password = '"+ req.body.password+ "'  ", function (err, row, field) {
     if(row.length > 0) {
-      res.send({message: row[0]})
+      res.send({message: row[0]});
+      //res.send({email: req.body.email});
+
+
     }
+    else
+      res.send({message:-1})
   })
   ;
 });

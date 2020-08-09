@@ -8,6 +8,7 @@ var connection = mysql.createConnection({
     password: '', // Your database's password.
     database: 'eless', // Your database's name.
 })
+//get data from frontend
 router.post('/', function(req, res, next) {
     console.warn(req.body.username);
     var firstname= req.body.firstname;
